@@ -1,0 +1,25 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.get("https://www.wikipedia.org/")
+
+time.sleep(2)
+search_box = driver.find_element(By.ID, "searchInput")
+print("Search box found:", search_box)
+english_lang = driver.find_element(By.ID, "js-link-box-en")
+print("English language found:", english_lang)
+logo = driver.find_element(By.CLASS_NAME, "central-featured-logo")
+print("Wikipedia logo found")
+languages = driver.find_elements(By.CSS_SELECTOR, ".central-featured-lang strong")
+print("Total languages in central block:", len(languages))
+time.sleep(2)
+driver.back()
+time.sleep(2)
+driver.forward()
+time.sleep(2)
+driver.refresh()
+time.sleep(2)
+print("Final Page Title:", driver.title)
+driver.quit()
